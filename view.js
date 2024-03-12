@@ -63,6 +63,7 @@ Drawing.prototype.updateShapeList = function () {
             drawing.tabForm.splice(position, 1);
             drawing.paint(ctx, canvas);
             drawing.updateShapeList();
+            state.clearAllNextState(drawing.tabForm);
         });
     });
 }

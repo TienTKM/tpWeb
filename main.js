@@ -19,8 +19,10 @@ ligne.paint(ctx); */
 //
 
 // Code final à utiliser pour manipuler Pencil.
+var state = new State();
 var drawing = new Drawing();
 var pencil = new Pencil(ctx, drawing, canvas);
+var undoRedo = new UndoRedo();
 drawing.paint(ctx, canvas);
 
 

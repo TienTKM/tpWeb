@@ -66,8 +66,42 @@ function Pencil(ctx, drawing, canvas) {
         dnd.yInit = dnd.yFinal;
         // Update the shape list
         drawing.updateShapeList();
+		state.clearAllNextState(drawing.tabForm);
     }
     };
 };
+
+function UndoRedo(){
+    this.undoButton = document.getElementById("undoButton");
+    this.redoButton = document.getElementById("redoButton");
+
+    this.undoButton.addEventListener("click", function() {
+        var previousState = state.returnPreviousState();
+        if (previousState) {
+            console.log(previousState);
+            console.log(drawing.tabForm);
+            drawing.tabForm = previousState;
+            drawing.paint(ctx, canvas);
+            drawing.updateShapeList();
+        } else {
+            console.log("No previous state available.");
+        }
+    });
+
+    this.redoButton.addEventListener("click", function() {
+        var nextState = state.goNextState();
+        if (nextState) {
+            console.log(nextState);
+            console.log(drawing.tabForm);
+            drawing.tabForm = nextState;
+            drawing.paint(ctx, canvas);
+            drawing.updateShapeList();
+        } else {
+            console.log("No next state available.");
+        }
+    });
+}
+
+
 
 
