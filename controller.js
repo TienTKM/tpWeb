@@ -8,6 +8,21 @@ function Pencil(ctx, drawing, canvas) {
 	this.currentShape = null;
 
 	// Liez ici les widgets à la classe pour modifier les attributs présents ci-dessus.
+	document.getElementById('butRect').addEventListener('click', function() {
+        this.currEditingMode = editingMode.rect;
+    }.bind(this));
+
+    document.getElementById('butLine').addEventListener('click', function() {
+        this.currEditingMode = editingMode.line;
+    }.bind(this));
+
+    document.getElementById('spinnerWidth').addEventListener('change', function(event) {
+        this.currLineWidth = parseInt(event.target.value);
+    }.bind(this));
+
+    document.getElementById('colour').addEventListener('change', function(event) {
+        this.currColour = event.target.value;
+    }.bind(this));
 
     new DnD(canvas, this);
 
@@ -47,6 +62,8 @@ function Pencil(ctx, drawing, canvas) {
         this.currentShape.finaly = y;
         this.currentShape = null;
         drawing.paint(ctx, canvas);
+		dnd.xInit = dnd.xFinal;
+        dnd.yInit = dnd.yFinal;
     }
     };
 };
