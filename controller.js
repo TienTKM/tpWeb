@@ -32,7 +32,7 @@ function Pencil(ctx, drawing, canvas) {
         
         if (this.currEditingMode === editingMode.rect) {
             this.currentShape = new Rectangle(x, y, x, y, this.currLineWidth, this.currColour);
-        } else if (this.currEditingMode === editingMode.line) {
+        } else if (this.currEditingMode ===  editingMode.line) {
             this.currentShape = new Line(x, y, x, y, this.currLineWidth, this.currColour);
         }
 
@@ -64,6 +64,8 @@ function Pencil(ctx, drawing, canvas) {
         drawing.paint(ctx, canvas);
 		dnd.xInit = dnd.xFinal;
         dnd.yInit = dnd.yFinal;
+        // Update the shape list
+        drawing.updateShapeList();
     }
     };
 };

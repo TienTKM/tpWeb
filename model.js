@@ -2,13 +2,6 @@
 // Drawing
 function Drawing() {
     this.tabForm = [];
-    this.paint = function (ctx, canvas) {
-        ctx.fillStyle = '#F0F0F0'; // set canvas' background color
-        ctx.fillRect(0, 0, canvas.width, canvas.height);  // now fill the canvas
-        for (const element of this.tabForm) {
-            element.paint(ctx);
-        }
-    }
     // Implement get form
     this.getForms = function () {
         return this.tabForm;
@@ -23,13 +16,6 @@ function Rectangle(initx, inity, finalx, finaly, thickness, color) {
     this.finaly = finaly;
     this.thickness = thickness;
     this.color = color;
-    this.paint = function (ctx) {
-        ctx.lineWidth = this.thickness;
-        ctx.strokeStyle = this.color;
-        ctx.beginPath();
-        ctx.rect(this.initx, this.inity, this.finalx, this.finaly);
-        ctx.stroke();
-    }
     // Implement getters
     this.getInitX = function () {
         return this.initx;
@@ -60,14 +46,6 @@ function Line(initx, inity, finalx, finaly, thickness, color) {
     this.finaly = finaly;
     this.thickness = thickness;
     this.color = color;
-    this.paint = function (ctx) {
-        ctx.lineWidth = this.thickness;
-        ctx.strokeStyle = this.color;
-        ctx.beginPath();
-        ctx.moveTo(this.initx, this.inity);
-        ctx.lineTo(this.finalx, this.finaly);
-        ctx.stroke();
-    }
     // Implement getters
     this.getInitX = function () {
         return this.initx;
